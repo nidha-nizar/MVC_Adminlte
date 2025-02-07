@@ -1,0 +1,57 @@
+﻿@model IEnumerable<registers>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+       @*  <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="r_id" />
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="eamil" class="control-label"></label>
+                <input asp-for="eamil" class="form-control" />
+                <span asp-validation-for="eamil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+
+        </form> *@
+    
+<table class=" table table-danger">
+	<thead>
+		<tr>
+
+
+			<th>name</th>
+			<th>email</th>
+			<th>password</th>
+            <th>status</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var obj in Model)
+		{
+			<tr>
+
+				<td>
+
+					@obj.name
+				</td>
+				
+				<td>@obj.eamil</td>
+				<td>@obj.password</td>
+                <td>@obj.status</td>
+                <td><a  asp-action="approve" asp-route-id="@obj.r_id">APPROVE</a>
+                    <a   asp-action="reject" asp-route-id="@obj.r_id">REJECT</a></td>
+			</tr>
+		}
+	</tbody>
+</table>
